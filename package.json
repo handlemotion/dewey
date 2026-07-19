@@ -1,0 +1,101 @@
+{
+  "name": "dewey",
+  "version": "0.1.0",
+  "description": "A local-first personal AI assistant for desktop.",
+  "author": "HandleMotion",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/handlemotion/dewey.git"
+  },
+  "homepage": "https://github.com/handlemotion/dewey#readme",
+  "bugs": {
+    "url": "https://github.com/handlemotion/dewey/issues"
+  },
+  "packageManager": "pnpm@10.10.0",
+  "main": "./out/main/index.mjs",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "start": "electron-vite preview",
+    "build": "electron-vite build",
+    "package": "pnpm build && electron-builder --dir",
+    "dist": "pnpm build && electron-builder",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "test": "pnpm test:unit && pnpm test:storage",
+    "test:unit": "vitest run --exclude tests/database.test.ts",
+    "test:storage": "node scripts/run-electron-tests.mjs",
+    "test:watch": "vitest",
+    "postinstall": "node node_modules/electron/install.js && electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "4.0.16",
+    "ai": "7.0.31",
+    "better-sqlite3": "12.11.1",
+    "dotenv": "17.4.2",
+    "drizzle-orm": "0.45.2",
+    "exa-js": "2.16.0",
+    "firecrawl": "4.30.1",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.4",
+    "@types/better-sqlite3": "7.6.13",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "5.2.0",
+    "drizzle-kit": "0.31.10",
+    "electron": "43.1.1",
+    "electron-builder": "26.15.3",
+    "electron-vite": "5.0.0",
+    "typescript": "7.0.2",
+    "vite": "7.3.6",
+    "vitest": "4.1.10"
+  },
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10"
+  },
+  "build": {
+    "appId": "com.handlemotion.dewey",
+    "productName": "Dewey",
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/better-sqlite3/**"
+    ],
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "hardenedRuntime": true,
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Dewey uses the microphone for realtime conversation."
+      }
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "category": "Utility",
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  }
+}

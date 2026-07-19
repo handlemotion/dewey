@@ -1,0 +1,12 @@
+node_modules
+out
+release
+coverage
+*-smoke.png
+.env
+.env.local
+.DS_Store
+*.db
+*.db-shm
+*.db-wal
+.firecrawl
