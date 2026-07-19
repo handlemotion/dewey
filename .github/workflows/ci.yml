@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v5
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: 10.10.0
       - uses: actions/setup-node@v5
@@ -28,18 +28,18 @@ jobs:
       - run: pnpm lint
       - run: pnpm test
       - name: Build native installer
-        run: pnpm dist -- --publish never
+        run: node scripts/build-ci.mjs
         env:
-          CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
-          CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
-          WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
-          WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
-          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
-          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
-          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          DEWEY_CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
+          DEWEY_CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
+          DEWEY_WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
+          DEWEY_WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
+          DEWEY_APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
+          DEWEY_APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          DEWEY_APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
+          DEWEY_APPLE_ID: ${{ secrets.APPLE_ID }}
+          DEWEY_APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          DEWEY_APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
       - name: Upload native installer
         uses: actions/upload-artifact@v4
         with:

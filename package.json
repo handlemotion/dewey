@@ -2,7 +2,11 @@
   "name": "dewey",
   "version": "0.1.0",
   "description": "A local-first personal AI assistant for desktop.",
-  "author": "HandleMotion",
+  "author": {
+    "name": "HandleMotion",
+    "email": "rodrigo@handlemotion.com",
+    "url": "https://handlemotion.com"
+  },
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -21,7 +25,7 @@
     "start": "electron-vite preview",
     "build": "electron-vite build",
     "package": "pnpm build && electron-builder --dir",
-    "dist": "pnpm build && electron-builder",
+    "dist": "pnpm build && electron-builder --publish never",
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "format": "biome check --write .",

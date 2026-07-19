@@ -74,7 +74,7 @@ pnpm build
 ```
 
 `pnpm package` creates an unpacked build for the current platform.
-`pnpm dist -- --publish never` creates native installers. CI verifies and
+`pnpm dist` creates native installers. CI verifies and
 packages macOS, Windows, and Linux independently.
 
 ## Contributing
