@@ -1,10 +1,10 @@
-import { join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { describe, expect, it } from "vitest";
 import { isTrustedRendererUrl } from "../src/main/security/trusted-renderer";
 
 describe("trusted renderer URL", () => {
-  const expectedFilePath = join("/Applications", "Dewey.app", "renderer", "index.html");
+  const expectedFilePath = resolve("fixtures", "Dewey", "renderer", "index.html");
 
   it("accepts only the exact packaged renderer file", () => {
     expect(
@@ -16,7 +16,7 @@ describe("trusted renderer URL", () => {
     ).toBe(true);
     expect(
       isTrustedRendererUrl({
-        url: pathToFileURL(join(expectedFilePath, "..", "other.html")).href,
+        url: pathToFileURL(join(dirname(expectedFilePath), "other.html")).href,
         packaged: true,
         expectedFilePath,
       }),
