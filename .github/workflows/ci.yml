@@ -49,7 +49,11 @@ jobs:
         with:
           name: Dewey-${{ runner.os }}-${{ runner.arch }}
           path: |
-            release/*
-            !release/builder-*.yml
+            release/*.AppImage
+            release/*.deb
+            release/*.dmg
+            release/*-mac.zip
+            release/*.exe
           if-no-files-found: error
           retention-days: 14
+          compression-level: 0
