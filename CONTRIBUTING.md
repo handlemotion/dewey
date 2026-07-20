@@ -43,4 +43,4 @@ include generated installers, provider credentials, raw audio, or local
 databases.
 
 By contributing, you agree that your contribution is licensed under
-[Apache-2.0](LICENSE).
+[MIT](LICENSE).

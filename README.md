@@ -3,7 +3,7 @@
   <p>A local-first desktop AI assistant built for natural conversation and deliberate action.</p>
 
   [![CI](https://github.com/handlemotion/dewey/actions/workflows/ci.yml/badge.svg)](https://github.com/handlemotion/dewey/actions/workflows/ci.yml)
-  [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 </div>
 
 Dewey is an open-source Electron application with native realtime voice, local
@@ -84,4 +84,4 @@ report vulnerabilities through the process in [SECURITY.md](SECURITY.md).
 
 ## License
 
-Apache-2.0 © HandleMotion. See [LICENSE](LICENSE).
+MIT © HandleMotion. See [LICENSE](LICENSE).
